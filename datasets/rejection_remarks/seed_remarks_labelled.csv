@@ -1,0 +1,46 @@
+id,remark_text,root_cause_code,claim_form,jd_category_hint,source_type,notes
+1,KYC details not matching,R01,Form 19,,portal-style,Generic KYC mismatch; usually name/DOB between Aadhaar and UAN
+2,Member details mismatch,R01,Form 19,,portal-style,Name/father name/DOB mismatch
+3,Name differs as per Aadhaar and PF records,R01,Form 31,,portal-style,
+4,Name mismatch: Aadhaar RAMESH KUMAR SINGH vs UAN RAMESH K SINGH,R01,Form 19,A,synthetic,Deck demo case
+5,Date of birth in Aadhaar does not match EPFO records,R01,Form 10C,,portal-style,
+6,Father's name not matching with records,R01,Form 19,,portal-style,
+7,Gender mismatch between UAN and Aadhaar,R01,Form 19,B,portal-style,
+8,Date of exit not available,R02,Form 19,,portal-style,Employer has not marked DOE
+9,DOE not updated by employer,R02,Form 19,,portal-style,
+10,Member still in service as per records,R02,Form 19,,portal-style,DOE missing so system treats member as employed
+11,Date of exit not updated; member appears in service,R02,Form 10C,,portal-style,
+12,Please update date of exit and resubmit,R02,Form 19,,portal-style,
+13,Service overlap with previous establishment,R03,Form 13,,portal-style,Old employer DOE later than new employer DOJ
+14,Date of joining mismatch,R03,Form 19,,portal-style,
+15,Overlapping service period found,R03,Form 13,,portal-style,
+16,DOJ as per employer differs from member record,R03,Form 19,,portal-style,
+17,Bank KYC not verified,R04,Form 19,,portal-style,
+18,Name in bank account differs from name in PF records,R04,Form 31,,portal-style,
+19,IFSC code invalid or bank account not seeded,R04,Form 19,,portal-style,
+20,Bank account number mismatch; please upload cheque or passbook,R04,Form 31,,portal-style,
+21,Joint bank account not permitted (other than spouse),R04,Form 19,,portal-style,
+22,Aadhaar not verified,R05,Form 19,,portal-style,
+23,UAN not Aadhaar validated,R05,Form 19,C,portal-style,
+24,Aadhaar seeding pending with employer,R05,Form 31,,portal-style,
+25,Wrong Aadhaar linked with UAN,R05,Form 19,,portal-style,Employer files correction via JD (13 Aug 2025 order)
+26,Previous service not transferred; please file Form 13,R06,Form 19,,portal-style,
+27,Multiple UAN found against the member,R06,Form 19,,portal-style,
+28,Service history incomplete; earlier member ID not linked,R06,Form 10C,,portal-style,
+29,Member ID erroneously linked to UAN,R06,Form 19,,portal-style,De-linking circular 17 Jan 2025 / 13 Apr 2026
+30,Claim already under process,R07,Form 19,,portal-style,
+31,Previous claim pending; duplicate claim rejected,R07,Form 31,,portal-style,
+32,Two months not completed from date of exit,R08,Form 19,,portal-style,Cooling period rule
+33,Member not eligible for final settlement while in service,R08,Form 19,,portal-style,
+34,Service more than 9.5 years; apply for pension in Form 10D instead of 10C,R08,Form 10C,,portal-style,
+35,Advance not admissible for the purpose selected,R08,Form 31,,portal-style,
+36,Service less than 5 years; Form 15G/15H not submitted,R09,Form 19,,portal-style,TDS documentation; Form 121 from Apr 2026
+37,PAN not verified,R09,Form 19,,portal-style,
+38,Form 15G not uploaded for amount above 50000,R09,Form 19,,portal-style,
+39,EPS contribution not received for the period,R10,Form 10C,,portal-style,
+40,Service less than 6 months; not eligible for EPS withdrawal benefit,R10,Form 10C,,portal-style,
+41,Scheme certificate required; EPS service more than 10 years,R10,Form 10C,,portal-style,
+42,EPS wages exceed ceiling; contribution rectification required,R10,Form 10D,,portal-style,Erroneous EPS contribution circular 19 Dec 2025
+43,Signature mismatch with records,R00,Form 19 (offline),,portal-style,Offline-claim only; low priority
+44,Claim rejected. Reason: others,R00,Form 19,,portal-style,Unclassified → clarifying question
+45,Documents not legible; resubmit,R00,Form 31,,portal-style,Unclassified

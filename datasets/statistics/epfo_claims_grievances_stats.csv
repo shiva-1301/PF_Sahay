@@ -1,0 +1,20 @@
+period,metric,value,source,url
+FY2023-24,claims_received_lakh,623,Factly/Dataful from EPFO Annual Report 2023-24,https://factly.in/epfo-claim-rejection-rate-at-26-in-2023-24
+FY2023-24,claims_settled_lakh,445,EPFO statement Feb 2025 / Factly,https://www.tribuneindia.com/news/business/epfo-achieves-milestone-of-settling-over-5-crore-claims-in-fy-2024-25-mansukh-mandaviya
+FY2023-24,claims_rejected_lakh,~160,Factly/Dataful (26% rejection rate),https://factly.in/epfo-claim-rejection-rate-at-26-in-2023-24
+FY2023-24,rejection_rate_pct,26 (Kotak811 cites 25.5),Factly; Kotak811 annual report summary,https://www.kotak811.bank.in/insights/epfo/epfo-epf-eps-pension-retirement-savings-annual-report-corpus
+FY2024-25,claims_received_lakh,~796 (79.5 million),EPFO Annual Report 2024-25 via Business Today / Kotak811,https://www.businesstoday.in/personal-finance/news/story/epfos-instant-pf-withdrawal-promise-has-a-catch-one-in-five-claims-still-gets-rejected-541466-2026-07-07
+FY2024-25,claims_settled_lakh,602 (60.2 million; 5.08 cr by Feb 2025),EPFO Annual Report 2024-25; Minister statement 6 Feb 2025,https://www.kotak811.bank.in/insights/epfo/epfo-epf-eps-pension-retirement-savings-annual-report-corpus
+FY2024-25,claims_rejected_lakh,~174,EPFO Annual Report 2024-25 via Business Today,https://www.businesstoday.in/personal-finance/news/story/epfos-instant-pf-withdrawal-promise-has-a-catch-one-in-five-claims-still-gets-rejected-541466-2026-07-07
+FY2024-25,rejection_rate_pct,22,EPFO Annual Report 2024-25,https://www.kotak811.bank.in/insights/epfo/epfo-epf-eps-pension-retirement-savings-annual-report-corpus
+FY2024-25,pension_claim_rejection_rate_pct,~40,EPFO Annual Report 2024-25 via Kotak811,https://www.kotak811.bank.in/insights/epfo/epfo-epf-eps-pension-retirement-savings-annual-report-corpus
+FY2024-25,auto_settled_claims_lakh,187 (by Feb 2025); 216 (by 6 Mar 2025),Minister statement / newsonair,https://www.newsonair.gov.in/centre-approves-8-25-interest-rate-on-epf-deposits-for-fy-2024-25
+FY2024-25,grievances_lakh,~17.5,EPFO Annual Report 2024-25 via Kotak811,https://www.kotak811.bank.in/insights/epfo/epfo-epf-eps-pension-retirement-savings-annual-report-corpus
+FY2023-24,epfigms_grievances,"16,14,386",Factly,https://factly.in/epfo-claim-rejection-rate-at-26-in-2023-24
+FY2012-13,epfigms_grievances,"2,48,072",Factly,https://factly.in/epfo-claim-rejection-rate-at-26-in-2023-24
+CY2025,epfigms_grievances_received,"17,54,297","Lok Sabha USQ 2680, 9 Mar 2026 via Shriram Life",https://www.shriramlife.com/blog/advice/register-epf-grievance-online
+CY2025,epfigms_grievances_disposed,"17,20,489 (98.07%)","Lok Sabha USQ 2680, 9 Mar 2026 via Shriram Life",https://www.shriramlife.com/blog/advice/register-epf-grievance-online
+FY2014-15 to 2018-19,avg_rejection_rate_pct,17,Factly,https://factly.in/epfo-claim-rejection-rate-at-26-in-2023-24
+FY2019-20 to 2023-24,avg_rejection_rate_pct,27,Factly,https://factly.in/epfo-claim-rejection-rate-at-26-in-2023-24
+31 Mar 2024,epf_member_accounts_crore,32.56,Factly,https://factly.in/epfo-claim-rejection-rate-at-26-in-2023-24
+FY2024-25,epfo_corpus_inr_trillion,28.4,EPFO Annual Report 2024-25 via Kotak811,https://www.kotak811.bank.in/insights/epfo/epfo-epf-eps-pension-retirement-savings-annual-report-corpus

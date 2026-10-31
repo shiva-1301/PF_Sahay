@@ -1,0 +1,70 @@
+{
+ "name_gender": [
+  "Passport",
+  "Birth Certificate",
+  "Driving Licence",
+  "Service Photo ID Card (Central/State/UT Govt/PSU/Banks)",
+  "School Certificates (SLC/TC/SSC)",
+  "Bank Passbook with Photo",
+  "PAN Card / e-PAN",
+  "Voter ID / e-Voter ID",
+  "Pension Photo Card",
+  "CGHS/ECHS/Medical Insurance Card",
+  "ST/SC/OBC Certificate with Photo",
+  "Gazette Notification (full name change)",
+  "Freedom Fighter Card",
+  "PIO/OCI Card",
+  "Tibetan Refugee Card",
+  "Transgender Identity Certificate (added 26 Dec 2025)"
+ ],
+ "date_of_birth": [
+  "Birth Certificate (Registrar of Births and Deaths)",
+  "School Certificates (SLC/TC/SSC)",
+  "Service Records Certificate (Central/State Govt)",
+  "Medical Certificate with Affidavit (if above unavailable)",
+  "Passport",
+  "PAN",
+  "Pension Payment Order",
+  "CGHS/ECHS/ESIC Card with Photo & DOB",
+  "Domicile Certificate",
+  "Voter ID Card"
+ ],
+ "family_details": [
+  "Passport of Member",
+  "Ration Card / PDS Card",
+  "CGHS/ECHS/Medical Insurance Card",
+  "Pension Card",
+  "Birth Certificate",
+  "Marriage Certificate (for Spouse)",
+  "School Certificates",
+  "PAN Card",
+  "Driving License",
+  "Certificate from MLA/MP/Sarpanch"
+ ],
+ "marital_status": [
+  "Marriage Certificate (Govt/Municipality/Gram Panchayat)",
+  "Divorce Decree",
+  "Death Certificate (for widowed)",
+  "Passport",
+  "Affidavit (notarized)",
+  "Ration Card / Voter ID",
+  "Employer Certificate (Family Member Certificate on letterhead)",
+  "Medical Insurance Card (State Govt/ECHS/ESIC/CGHS)"
+ ],
+ "attesting_authorities_if_establishment_closed": [
+  "Magistrate",
+  "Gazetted Officer",
+  "Post/Sub-Post Master",
+  "Village-level officials (Union President, Panchayat President, Patel/Headman, Karnam, Revenue Inspector, Lekhpal/Patwari, Village Munsiff)",
+  "Municipal/District Board members",
+  "MP or MLA",
+  "Municipal Corporation members",
+  "Notary Public",
+  "EPF CBT or Regional Committee member",
+  "Bank manager where claimant holds account",
+  "Head of recognized educational institution",
+  "Office bearer of recognized trade union",
+  "Any official approved by the Commissioner"
+ ],
+ "source": "Annexure II of 16 Jan 2025 circular (as reproduced at govtemployeeshub.com) + Annexure I of 13 Aug 2025 order. Date of Joining/Leaving and Nationality document lists still to be added from the original PDF."
+}

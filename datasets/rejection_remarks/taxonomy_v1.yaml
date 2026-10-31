@@ -1,0 +1,68 @@
+# PF Sahay rejection-code taxonomy v1 (10 root causes + R00 fallback)
+# Trigger phrases are regex-ish seeds for the deterministic classifier.
+version: 1
+confidence_threshold: 0.6
+codes:
+  R00:
+    name: Unclassified
+    fix_path: Ask one clarifying question; then offer generic EPFiGMS grievance + RTI pair.
+    documents: [grievance, rti]
+  R01:
+    name: Name / DOB / gender mismatch (Aadhaar vs UAN)
+    triggers: ["kyc details? not match", "member details? mismatch", "name (differs|mismatch|not match)", "date of birth.*(mismatch|not match)", "dob.*mismatch", "father.?s? name.*(mismatch|not match)", "gender mismatch"]
+    fix_path:
+      A: Self-correct via Member e-Sewa > Manage > Joint Declaration (Aadhaar-validated, no documents).
+      B: File online JD; employer approves; re-file claim.
+      C: Physical JD (Annexure I format) with 2 documents, employer or attesting authority, at RO PRO counter.
+    documents: [jd_checklist, employer_letter_jd, grievance]
+    corpus_refs: ["WSU/JointDeclaration/E-54018/2024-25/006 (16 Jan 2025)"]
+  R02:
+    name: Date of exit not marked / wrong
+    triggers: ["date of exit", "\\bdoe\\b", "still in service", "exit not (updated|available|marked)"]
+    fix_path: Member may self-mark DOE after 2 months from last contribution month; else employer marks DOE on employer portal; escalate via EPFiGMS then RTI if employer refuses.
+    documents: [employer_letter_exit_date, grievance, rti]
+  R03:
+    name: Date of joining mismatch / service overlap
+    triggers: ["service overlap", "overlapping service", "date of joining.*(mismatch|differ)", "\\bdoj\\b.*mismatch"]
+    fix_path: Previous employer corrects DOE (or JD for DOJ); then re-file transfer/claim.
+    documents: [employer_letter_jd, grievance]
+    corpus_refs: ["Simplification of Transfer Claim Process - Handling of Overlapping Service Period (20 May 2025)"]
+  R04:
+    name: Bank KYC not verified / name or IFSC mismatch
+    triggers: ["bank kyc", "ifsc", "bank account.*(mismatch|not seeded|differs)", "name in bank", "joint (bank )?account"]
+    fix_path: Upload cheque/passbook under KYC; employer approves; only spouse joint accounts allowed.
+    documents: [portal_walkthrough_bank_kyc, employer_letter_kyc]
+  R05:
+    name: Aadhaar not seeded / wrong Aadhaar linked
+    triggers: ["aadhaar not (verified|seeded|validated)", "uan not aadhaar", "wrong aadhaar"]
+    fix_path: Seed Aadhaar via member portal; wrong Aadhaar -> employer files correction via online JD, RO approves (13 Aug 2025 order); closed establishment -> physical JD at PRO.
+    documents: [employer_letter_aadhaar, grievance]
+    corpus_refs: ["WSU/MemberProfile/E-710137/2025-26/26 (13 Aug 2025)"]
+  R06:
+    name: Multiple UANs / incomplete service history
+    triggers: ["multiple uan", "previous service not transferred", "service history incomplete", "erroneously linked", "member id not linked"]
+    fix_path: File Form 13 transfer from old UAN (Annexure K now on portal); report duplicate UAN; de-linking of erroneous member IDs via employer.
+    documents: [transfer_guide, grievance]
+    corpus_refs: ["Simplification of Transfer of PF Account (15 Jan 2025)", "De-linking of erroneously linked Member Ids (17 Jan 2025; 13 Apr 2026)"]
+  R07:
+    name: Previous claim pending / duplicate
+    triggers: ["already under process", "previous claim pending", "duplicate claim"]
+    fix_path: Wait for earlier claim; request closure via EPFiGMS if stale.
+    documents: [grievance]
+  R08:
+    name: Eligibility - too early or wrong form
+    triggers: ["two months not completed", "2 months", "not eligible", "while in service", "9.5 years", "10d instead", "not admissible"]
+    fix_path: Wait out 2-month cooling period; use correct form (19/10C/10D/31); check advance purpose eligibility.
+    documents: [eligibility_explainer, correct_form_checklist]
+  R09:
+    name: Tax documentation (15G/15H -> Form 121, PAN)
+    triggers: ["15g", "15h", "form 121", "pan not verified", "tds"]
+    fix_path: Verify PAN; submit Form 121 (replaces 15G/15H from 1 Apr 2026) where service < 5 years and amount above threshold.
+    documents: [portal_walkthrough_tax]
+    corpus_refs: ["Transition from Form 15G/15H to Consolidated Form 121 (13 Apr 2025 / 13 Apr 2026)"]
+  R10:
+    name: EPS / pension-specific
+    triggers: ["eps contribution", "scheme certificate", "less than 6 months", "10d", "pension", "eps wages"]
+    fix_path: Depends on sub-case; employer rectifies EPS contribution (19 Dec 2025 circular) or RO processes 10C/10D; scheme certificate for >10 years.
+    documents: [employer_letter_eps, grievance, rti]
+    corpus_refs: ["Rectification of erroneous EPS contributions (19 Dec 2025)", "Regulating EPS entitlement of members having Multiple Account Numbers (29 Jan 2024)"]

@@ -1,0 +1,9 @@
+field,category_A,category_B,category_C
+Name,EE,EE>ER,ER>DA>AO
+Date of Birth,EE,EE>ER,ER>DA>AO
+Gender,EE,EE>ER,ER>DA>AO
+Nationality,EE,EE,ER>DA>AO
+Father/Mother/Spouse Name,EE,EE>ER,ER>DA>AO
+Marital Status,EE,EE,ER>DA>AO
+Date of Joining / Date of Leaving / Reason of Leaving,EE,EE>ER,ER>DA>AO/APFC
+Aadhaar (wrong Aadhaar linked),ER>RO (per 13 Aug 2025 order),ER>RO (per 13 Aug 2025 order),Physical JD at PRO>APFC (per 13 Aug 2025 order)

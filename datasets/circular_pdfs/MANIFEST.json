@@ -1,0 +1,22 @@
+[
+ {
+  "file": "EPFO_JD_Simplification_16Jan2025_via_KEA.pdf",
+  "sha256": "e815976ab4f8c58c3372ce66802f3310a245075b0e91103421d52a546414431d",
+  "note": "Karnataka Employers' Association summary circular 012/2025 reproducing the EPFO JD circular text (annexures NOT included). Original: https://www.epfindia.gov.in/site_docs/PDFs/Circulars/Y2025-2026/Circular_SimplificationOfJointDeclarationProcess.pdf"
+ },
+ {
+  "file": "EPFO_Aadhaar_Seeding_Correction_UAN_13Aug2025.pdf",
+  "sha256": "e30c10880801c2ad285aaf68601e63ddb2f531d9b782e39b0e30e69d5d92c78a",
+  "note": "Full EPFO order WSU/MemberProfile/E-710137/2025-26/26 incl. Annexure I physical JD form (mirror: staffnews.in)"
+ },
+ {
+  "file": "DPDP_Rules_2025_PIB_Backgrounder_17Nov2025.pdf",
+  "sha256": "047206c88ce111807baf60f476b8d7f15a7480a2727e76a8ad59e394f49852b4",
+  "note": "PIB backgrounder on DPDP Rules 2025 and phased implementation"
+ },
+ {
+  "file": "EPF_RTI_Letter_Template_jagoinvestor.pdf",
+  "sha256": "7c1c9d43585cee9812bd05ac66da7eb5695a95a8d03f323e4213c97d4b3d07eb",
+  "note": "Community RTI application template for EPF status (jagoinvestor.com) \u2014 reference for our RTI generator"
+ }
+]

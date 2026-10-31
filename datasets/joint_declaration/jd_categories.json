@@ -1,0 +1,8 @@
+{
+ "A": "Member ID linked with UAN generated on/after 1 Oct 2017 on Aadhaar basis; JD filed online; most fields self-approved by employee (EE) with no documents.",
+ "B": "UAN generated before 1 Oct 2017 but Name, DOB, Gender validated by UIDAI; JD filed online; employee submits, employer (ER) approves for most fields.",
+ "C": "UAN not Aadhaar-validated, or no UAN, or deceased member; physical JD filed by member/claimant via employer or (if establishment closed) attested by an authority listed in MAP Part II-A para 10.18, submitted at RO PRO counter.",
+ "legend": "EE=Employee, ER=Employer, DA=Dealing Assistant, AO=Accounts Officer, APFC=Assistant PF Commissioner, RO=Regional Office, PRO=Public Relations Officer",
+ "source": "EPFO circular WSU/JointDeclaration/E-54018/2024-25/006 dated 16/01/2025 (supersedes JD SOP v3.0 of 31/07/2024) and order WSU/MemberProfile/E-710137/2025-26/26 dated 13/08/2025",
+ "document_rule": "Min 2 supporting documents per field (1 if via DigiLocker); none where EE can self-correct."
+}
