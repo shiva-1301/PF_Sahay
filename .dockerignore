@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.git
+.venv
+**/__pycache__
+**/.pytest_cache
+frontend
+docs
+datasets/circular_pdfs
+datasets/epfo_circulars
+datasets/statistics

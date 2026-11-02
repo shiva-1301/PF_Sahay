@@ -80,3 +80,11 @@ One line of reasoning per decision. Newest phase at the bottom.
 - **API base URL defaults to `http://127.0.0.1:8000`, not `localhost`.** On Windows `localhost` tries IPv6 first and some clients wait ~2 s before falling back (measured: 2.1 s vs 3 ms per call).
 - **Backend runs without `--reload`.** Uvicorn's reloader detected changes but the old worker never exited once the embedding model was loaded (Windows), leaving stale code serving. Restart after Python changes.
 - **360 px check** was done by framing the app in a 360 px iframe (the test browser window could not be resized); screenshots in `docs/screenshots/` come from that run.
+
+## Phase 6 — Hardening and handoff
+
+- **Deployment target: Render for the API (`render.yaml`, Docker), Vercel for the frontend.** Railway would work equally well; Render's blueprint keeps the env vars and health check in the repo. No `vercel.json` is needed — Vercel detects Next.js; set the project root to `frontend/` and `NEXT_PUBLIC_API_URL`.
+- **Docker build context is the repo root** because the backend reads the taxonomy, JD and office data from `datasets/`; only those three folders are copied in. Torch is installed from the CPU-only wheel index (the default Linux wheel pulls CUDA, several GB), the embedding model is downloaded at build time and `HF_HUB_OFFLINE=1` is set, so the container makes no Hugging Face calls. Tesseract is installed so OCR works in the container. The image runs as a non-root user.
+- **The Dockerfile has not been built** — Docker Desktop was not running on the build machine and was not started.
+- **Render plan `starter`:** the API holds the MiniLM model in memory (~1 GB RSS with torch); the free 512 MB plan would be killed.
+- **Live citation check costs ~$0.30** (45 Sonnet 5.5 calls) and is a script, not a test, so the test suite never spends API credit.

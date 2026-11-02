@@ -130,7 +130,8 @@ def canned(code: str, chunks: list[dict], reason: str) -> dict:
         # Canned text is not tied to chunk IDs (they change on rebuild); point the
         # reader to the top retrieved sources on the first paragraph instead.
         paragraphs[0]["citations"] = [_citation(c) for c in chunks[:3]]
-    return {"paragraphs": paragraphs, "model": "canned", "dropped_sentences": 0, "fallback_reason": reason}
+    return {"paragraphs": paragraphs, "model": "canned", "dropped_sentences": 0, "sentences": 0,
+            "fallback_reason": reason}
 
 
 def explain(code: str, remark: str, intake: Optional[Intake] = None,
@@ -176,6 +177,7 @@ def explain(code: str, remark: str, intake: Optional[Intake] = None,
     paragraphs, dropped, total = validate(text, allowed)
     if total == 0 or dropped / total > MAX_DROP_SHARE:
         log.info("explain fallback=too_many_dropped code=%s dropped=%d total=%d", code, dropped, total)
-        return {**canned(code, chunks, "citations_invalid"), "dropped_sentences": dropped}
+        return {**canned(code, chunks, "citations_invalid"), "dropped_sentences": dropped, "sentences": total}
     log.info("explain code=%s model=%s dropped=%d total=%d", code, resp.model, dropped, total)
-    return {"paragraphs": paragraphs, "model": resp.model, "dropped_sentences": dropped, "fallback_reason": None}
+    return {"paragraphs": paragraphs, "model": resp.model, "dropped_sentences": dropped, "sentences": total,
+            "fallback_reason": None}

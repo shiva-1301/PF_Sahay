@@ -1,0 +1,17 @@
+# Render blueprint for the PF Sahay API. The frontend is meant for Vercel
+# (project root: frontend/, env NEXT_PUBLIC_API_URL=<this service's URL>).
+services:
+  - type: web
+    name: pfsahay-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    plan: starter            # the embedding model needs ~1 GB RAM; the free plan's 512 MB is too small
+    envVars:
+      - key: ANTHROPIC_KEY
+        sync: false          # set in the Render dashboard; without it the API serves canned explanations
+      - key: PFSAHAY_EXPLAIN_MODEL
+        value: claude-sonnet-5-5
+      - key: PFSAHAY_CORS_ORIGINS
+        sync: false          # e.g. https://pfsahay.vercel.app
