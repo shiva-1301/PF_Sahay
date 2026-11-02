@@ -11,7 +11,7 @@ DATASETS_DIR = REPO_ROOT / "datasets"
 load_dotenv(REPO_ROOT / ".env")
 
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_KEY", "")
-EXPLAIN_MODEL = os.environ.get("PFSAHAY_EXPLAIN_MODEL", "claude-sonnet-4-5")
+EXPLAIN_MODEL = os.environ.get("PFSAHAY_EXPLAIN_MODEL", "claude-sonnet-5-5")
 CORS_ORIGINS = [
     o.strip()
     for o in os.environ.get("PFSAHAY_CORS_ORIGINS", "http://localhost:3000").split(",")
