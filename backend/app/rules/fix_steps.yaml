@@ -1,0 +1,66 @@
+# Plain-language versions of each code's taxonomy fix_path, shown on the "Your fix"
+# step. Same content as the taxonomy, written for a 6th-grade reader. R01 varies by
+# Joint Declaration category ("unknown" when the category can't be told).
+R00:
+  - Copy the full rejection reason from Track Claim Status on the member portal.
+  - Answer the question on the diagnosis screen so we can narrow down the cause.
+  - If the reason is still unclear, file a grievance on EPFiGMS asking for the exact detail that is wrong.
+  - If you still get no clear answer, file an RTI application for your claim records.
+R01:
+  A:
+    - Log in to the member portal (Member e-Sewa) and open Manage > Joint Declaration.
+    - Correct the detail so it matches your Aadhaar exactly. In Category A you usually need no documents.
+    - When the correction shows in your profile, file your claim again.
+  B:
+    - File the Joint Declaration online on the member portal.
+    - Ask your employer to approve it on the employer portal. You can give them the employer letter.
+    - When it is approved, file your claim again.
+  C:
+    - Fill in the physical Joint Declaration form (Annexure I format).
+    - Attach two supporting documents and get it signed by your employer, or by an attesting officer if the company has closed.
+    - Submit it at the PRO counter of your EPFO Regional Office, and file your claim again after it is approved.
+  unknown:
+    - Find your Joint Declaration category (A, B or C) in the checklist.
+    - Correct the detail the way your category allows - yourself online (A), online with employer approval (B), or on paper at the EPFO office (C).
+    - When the correction is approved, file your claim again.
+R02:
+  - If your UAN is linked with Aadhaar, mark your Date of Exit yourself on the member portal once two months have passed since the last month your employer paid PF.
+  - If you cannot, ask your employer to mark your Date of Exit on the employer portal. You can give them the employer letter.
+  - If the employer does not act, file a grievance on EPFiGMS.
+  - If that does not help, file an RTI application.
+R03:
+  - Find which date is wrong - your old job's Date of Exit or your new job's Date of Joining.
+  - Ask that employer to correct it, or file a Joint Declaration to correct the Date of Joining.
+  - When the date is corrected, file your transfer or claim again.
+R04:
+  - On the member portal, open Manage > KYC and check your bank account number and IFSC.
+  - Correct them and upload a cheque or passbook if asked. The account must be in your own name (a joint account only with your spouse).
+  - Ask your employer to approve the bank KYC, then file your claim again.
+R05:
+  - If your Aadhaar is not linked, link it on the member portal.
+  - If the wrong Aadhaar is linked, ask your employer to correct it through an online Joint Declaration. The Regional Office then approves it.
+  - If your employer's company has closed, submit a physical Joint Declaration at the PRO counter of the Regional Office.
+  - When your Aadhaar shows as verified, file your claim again.
+R06:
+  - Check Service History on the member portal for old accounts or a second UAN.
+  - File a transfer with Form 13 for each old account.
+  - If a member ID is wrongly linked to your UAN, ask your employer to request de-linking.
+  - When your service history is complete, file your claim again.
+R07:
+  - Check Track Claim Status for the earlier claim.
+  - Wait for it to be settled or rejected before filing again.
+  - If it has not moved for a long time, file a grievance on EPFiGMS asking EPFO to settle or close it.
+R08:
+  - For a full PF withdrawal (Form 19), wait until two months have passed since you left your job.
+  - Check that the form fits your case - Form 19 (full PF), 10C (pension withdrawal, under 10 years of service), 10D (monthly pension), 31 (advance).
+  - For an advance, check that the purpose you chose is allowed.
+  - File again on the correct form.
+R09:
+  - Check that your PAN shows as verified under Manage > KYC on the member portal.
+  - If your service is under five years and your income is below the taxable limit, fill in Form 121, which replaced Forms 15G and 15H from 1 April 2026.
+  - File your claim again with Form 121.
+R10:
+  - Check your passbook for the EPS (pension) amounts and count your years of service.
+  - If EPS amounts are missing or wrong, ask your employer to rectify the EPS contribution. You can give them the employer letter.
+  - With 10 or more years of service, ask for a scheme certificate or claim pension on Form 10D instead of withdrawing.
+  - If the problem continues, file a grievance on EPFiGMS.

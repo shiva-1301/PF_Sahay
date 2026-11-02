@@ -130,3 +130,14 @@ def test_paraphrases_at_least_80_percent():
     ok = sum(classify(pii.strip(r["remark_text"])[0])["code"] == r["root_cause_code"] for r in rows)
     print(f"\nparaphrase accuracy {ok}/{len(rows)}")
     assert ok / len(rows) >= 0.80
+
+
+def test_plain_fix_steps_for_every_code_and_category():
+    from app.classifier import steps_for
+
+    for code in CODES:
+        for cat in (None, "A", "B", "C"):
+            steps = steps_for(code, "fallback; text", cat)
+            assert 3 <= len(steps) <= 5 and all(s.endswith(".") for s in steps), (code, cat)
+    a = classify("Name mismatch", Intake(uan_issued="after_oct_2017", aadhaar_validated=True))
+    assert "Member e-Sewa" in a["fix_steps"][0]

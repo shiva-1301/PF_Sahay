@@ -66,3 +66,17 @@ One line of reasoning per decision. Newest phase at the bottom.
 - **Grievance stays under 1,500 characters:** remark quoted up to 160 characters; with every field at its maximum length the text is ~910 characters, and a hard cut at 1,500 is kept as a safety net.
 - **RTI address:** the offices dataset has no postal addresses, so every RTI prints the placeholder; `office_address()` will use a `postal_address` column automatically if one is added to the CSV.
 - **Sample output folder:** `scripts/try_documents.py` writes to `/tmp/pfsahay_samples/` on macOS/Linux and `%TEMP%\pfsahay_samples` on Windows (where `/tmp` would mean `C:\tmp`); `--out` overrides.
+
+## Phase 5 — Frontend and end-to-end
+
+- **Tailwind only, no component library.** One teal accent on slate neutrals, system font stack, 44 px minimum touch targets, a single `max-w-2xl` column that is the whole layout at 360 px. Radio options are full-width labelled cards (easier to tap than bare radios).
+- **One step on screen at a time** (wizard) with a 5-segment progress bar; focus moves to each step's heading so screen-reader and keyboard users follow along.
+- **The diagnosis shows at once and the explanation fills in.** `/classify` answers in ~3 ms; the live explanation takes 6–8 s with Sonnet 5.5, so it loads after the card appears. Text-to-diagnosis, fix steps and documents are all under 1 s; the full live explanation is **not** under 5 s (demo/canned mode is instant). Shortening the explanation or streaming it would bring that down.
+- **Intake labels differ slightly from the spec:** "When did you first get your UAN?" offers "Before October 2017 / October 2017 or later / I don't have a UAN / Not sure" rather than "2017 or earlier / after October 2017 / not sure", because the JD cut-off is 1 October 2017 and "2017 or earlier" would misfile Oct–Dec 2017.
+- **JD category is shown only for R01, R03 and R05**, where the fix is a Joint Declaration; on other codes it confused more than it helped.
+- **Plain-language fix steps** live in `backend/app/rules/fix_steps.yaml` (per JD category for R01): the taxonomy's `fix_path` is shorthand ("Else employer marks DOE on employer portal"). The taxonomy text is still returned as `fix_path`.
+- **Clarifying questions with Yes/No buttons** only for the two that map to an intake answer (Date of Exit shown, Aadhaar verified); answering re-runs the diagnosis. The others are shown as guidance.
+- **No LLM fallback for screenshot OCR.** Sending an un-stripped image to a third party is off-limits; without Tesseract the upload button is disabled and labelled "OCR unavailable on this machine". OCR text is PII-stripped (numbers, not names) before it comes back for the user to confirm.
+- **API base URL defaults to `http://127.0.0.1:8000`, not `localhost`.** On Windows `localhost` tries IPv6 first and some clients wait ~2 s before falling back (measured: 2.1 s vs 3 ms per call).
+- **Backend runs without `--reload`.** Uvicorn's reloader detected changes but the old worker never exited once the embedding model was loaded (Windows), leaving stale code serving. Restart after Python changes.
+- **360 px check** was done by framing the app in a 360 px iframe (the test browser window could not be resized); screenshots in `docs/screenshots/` come from that run.

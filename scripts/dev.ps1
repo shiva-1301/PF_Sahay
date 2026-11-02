@@ -6,6 +6,6 @@ if (-not (Test-Path $py)) {
     Write-Error "No .venv found. Run: python -m venv .venv; .venv\Scripts\pip install -r backend\requirements.txt"
     exit 1
 }
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$root\backend'; & '$py' -m uvicorn app.main:app --reload --port 8000"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$root\backend'; & '$py' -m uvicorn app.main:app --port 8000"
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$root\frontend'; npm run dev -- --port 3000"
 Write-Host "Backend: http://localhost:8000/health   Frontend: http://localhost:3000"

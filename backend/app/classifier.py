@@ -24,6 +24,7 @@ from app.config import DATASETS_DIR
 from app.intake import JD_MEANING, Intake, jd_category
 
 RULES_PATH = Path(__file__).resolve().parent / "rules" / "classifier_extra.yaml"
+FIX_STEPS_PATH = Path(__file__).resolve().parent / "rules" / "fix_steps.yaml"
 TAXONOMY_PATH = DATASETS_DIR / "rejection_remarks" / "taxonomy_v1.yaml"
 
 BASE = 0.60
@@ -92,6 +93,19 @@ def fix_steps(fix_path: str) -> list[str]:
     """Split a taxonomy fix_path into ordered, human-readable steps."""
     parts = re.split(r";\s*|\.\s+(?=[A-Z])|\s*->\s*|,?\s*then\s+", fix_path.strip().rstrip("."))
     return [p[0].upper() + p[1:] for p in (s.strip() for s in parts) if p]
+
+
+@lru_cache(maxsize=1)
+def plain_steps() -> dict:
+    return yaml.safe_load(FIX_STEPS_PATH.read_text(encoding="utf-8"))
+
+
+def steps_for(code: str, fix_path: str, cat: Optional[str]) -> list[str]:
+    """Plain-language steps for the code (per JD category for R01); else split the taxonomy text."""
+    steps = plain_steps().get(code)
+    if isinstance(steps, dict):
+        steps = steps.get(cat or "unknown")
+    return list(steps) if steps else fix_steps(fix_path)
 
 
 def _matches(spec: _Code, text: str) -> list[tuple[int, int, str]]:
@@ -186,7 +200,7 @@ def classify(remark: str, intake: Optional[Intake] = None) -> dict:
         "jd_category": cat,
         "jd_meaning": JD_MEANING.get(cat) if cat else None,
         "fix_path": fp,
-        "fix_steps": fix_steps(fp),
+        "fix_steps": steps_for(code, fp, cat),
         "documents": spec.documents,
         "clarifying_question": question,
         "candidates": [{"code": c, "score": round(s, 2)} for c, s in ranked[:3]],

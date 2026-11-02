@@ -38,9 +38,21 @@ You need **Python 3.11+** and **Node.js 18+** installed.
    - Windows (PowerShell): `powershell -ExecutionPolicy Bypass -File scripts\dev.ps1`
 5. Open http://localhost:3000. The API runs on http://localhost:8000 (`/health` should say `ok`).
 
+The backend does not auto-reload: restart the script after changing Python code.
+
+**Demo mode:** open http://localhost:3000/?demo=1 for three one-click sample cases (name mismatch, missing date of exit, multiple UANs). Demo mode always uses the built-in explanations, so it works without an API key or internet.
+
+**Screenshot upload** needs [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) installed and on your PATH. Without it the button reads "OCR unavailable on this machine" and pasting text still works.
+
 Run the backend tests with `make test` (or `cd backend && ../.venv/Scripts/python -m pytest` on Windows).
 
-## Pipeline (planned)
+## Screenshots (360 px phone width)
+
+| 1. Paste the reason | 2. Diagnosis | 3. Explanation with sources | 4. Your fix | 5. Documents |
+| --- | --- | --- | --- | --- |
+| ![Paste step](docs/screenshots/1-paste.png) | ![Diagnosis](docs/screenshots/2-diagnosis.png) | ![Explanation](docs/screenshots/3-explanation.png) | ![Fix steps](docs/screenshots/4-fix.png) | ![Documents](docs/screenshots/5-documents.png) |
+
+## Pipeline
 
 1. Capture — paste rejection text or upload a screenshot (OCR).
 2. Strip PII — Aadhaar, PAN, bank, mobile and UAN numbers removed before anything leaves the server.

@@ -5,12 +5,12 @@ from contextlib import asynccontextmanager
 from typing import Literal, Optional
 
 import anthropic
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel, Field
 
-from app import documents, pii
+from app import documents, ocr, pii
 from app.classifier import classify
 from app.config import CORS_ORIGINS
 from app.explain import explain, get_client
@@ -108,3 +108,28 @@ def documents_text(req: DocumentsRequest) -> dict:
 @app.get("/offices")
 def list_offices() -> list[dict]:
     return documents.offices()
+
+
+@app.get("/ocr/status")
+def ocr_status() -> dict:
+    return {"available": ocr.available()}
+
+
+@app.post("/ocr")
+async def ocr_upload(file: UploadFile) -> dict:
+    """Screenshot -> text for the user to confirm. Identity numbers are removed before
+    the text is returned; the image is processed in memory and discarded."""
+    if not ocr.available():
+        raise HTTPException(503, "OCR unavailable on this machine")
+    if file.content_type not in ocr.ACCEPTED_TYPES:
+        raise HTTPException(415, "Upload a PNG, JPEG or WebP screenshot")
+    data = await file.read(ocr.MAX_IMAGE_BYTES + 1)
+    if len(data) > ocr.MAX_IMAGE_BYTES:
+        raise HTTPException(413, "Image is larger than 5 MB")
+    try:
+        text = ocr.extract_text(data)
+    except Exception:
+        raise HTTPException(422, "Could not read text from this image")
+    clean, redactions = pii.strip(text, mask_names=False)
+    log.info("ocr chars=%d", len(clean))
+    return {"text": clean, "redactions": redactions}
