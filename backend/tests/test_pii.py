@@ -42,3 +42,22 @@ def test_remark_text_untouched():
                    "Service more than 9.5 years; apply for pension in Form 10D instead of 10C",
                    "IFSC code invalid or bank account not seeded", "UAN not Aadhaar validated"]:
         assert pii.strip(remark) == (remark, {})
+
+
+@pytest.mark.parametrize("text,expected", [
+    ("Name mismatch: Aadhaar RAMESH KUMAR SINGH vs UAN RAMESH K SINGH",
+     "Name mismatch: Aadhaar [NAME_1] vs UAN [NAME_2]"),
+    ("My name is Ramesh Kumar and father's name Suresh Prasad Yadav",
+     "My name is [NAME_1] and father's name [NAME_2]"),
+    ("Aadhaar SITA DEVI, bank account SITA DEVI", "Aadhaar [NAME_1], bank account [NAME_1]"),
+])
+def test_names_masked(text, expected):
+    assert pii.strip(text)[0] == expected
+
+
+@pytest.mark.parametrize("remark", [
+    "UAN Not Aadhaar Validated", "Bank KYC Not Verified", "Name Differs As Per Aadhaar",
+    "Aadhaar Seeding Pending With Employer", "Member Details Mismatch", "PAN Not Verified",
+])
+def test_title_case_remarks_not_mistaken_for_names(remark):
+    assert pii.strip(remark) == (remark, {})
