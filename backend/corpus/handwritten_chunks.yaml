@@ -1,0 +1,137 @@
+# Hand-written corpus chunks for rules that are not in a circular we hold.
+# Each must name a public source a reader can check. Keep claims conservative;
+# when in doubt, tell the reader to verify on the source page.
+- key: form19_cooling_period
+  codes: [R02, R08]
+  source_title: "EPF Scheme, 1952 - Para 69(2): final settlement after two months without employment"
+  source_url: https://www.epfindia.gov.in/site_en/FAQ.php
+  source_date: ""
+  text: >-
+    Final settlement of the Provident Fund (Form 19) is allowed when the member has
+    not been employed in any establishment covered by EPF for a continuous period of
+    at least two months. This is often called the two-month cooling period. If a
+    member files Form 19 before two months have passed from the date of leaving the
+    job, the claim is usually rejected as "two months not completed" or "not eligible
+    while in service". The fix is to wait until two full months have passed after the
+    date of exit and then file again. Form 31 (partial withdrawal or advance) is a
+    different claim and can be used while still in service for the purposes allowed
+    by the Scheme. Check the current rule on the EPFO FAQ page before filing.
+
+- key: doe_self_marking
+  codes: [R02]
+  source_title: "EPFO member portal - updating Date of Exit (Date of Leaving)"
+  source_url: https://unifiedportal-mem.epfindia.gov.in/memberinterface/
+  source_date: ""
+  text: >-
+    The Date of Exit (also written DOE or Date of Leaving) tells EPFO that the member
+    has left a job. A final settlement or pension withdrawal claim cannot be processed
+    while the Date of Exit is missing, because the system treats the member as still
+    in service. The employer normally marks the Date of Exit on the employer portal.
+    If the employer has not done so, a member whose UAN is linked with Aadhaar can mark
+    the Date of Exit on the member portal (Manage > Mark Exit) once two months have
+    passed since the last month for which a contribution was received from that
+    employer. The date entered must match the real last working day. If neither route
+    works, the member can raise a grievance on EPFiGMS asking the employer or the
+    Regional Office to update it, and can file an RTI application for the claim status.
+
+- key: eps_service_rules
+  codes: [R08, R10]
+  source_title: "Employees' Pension Scheme, 1995 - withdrawal benefit, scheme certificate and pension (Forms 10C / 10D)"
+  source_url: https://www.epfindia.gov.in/site_en/FAQ.php
+  source_date: ""
+  text: >-
+    Under the Employees' Pension Scheme (EPS), what a member can claim depends on the
+    length of pensionable service. With less than six months of service, no EPS
+    withdrawal benefit is payable. With six months or more but less than ten years of
+    service, a member who leaves covered employment can claim the withdrawal benefit
+    using Form 10C. For counting service, nine and a half years or more is treated as
+    ten years. A member with ten or more years of service cannot take the withdrawal
+    benefit; instead the member can ask for a scheme certificate (through Form 10C) to
+    carry the service forward, and later claim monthly pension using Form 10D on
+    reaching 58 (early pension at a reduced rate is available from 50). A claim filed on
+    the wrong form for the member's service length is usually rejected. Check the
+    exact rules on the EPFO FAQ page.
+
+- key: epfigms_process
+  codes: [R00, R02, R03, R04, R05, R06, R07, R10]
+  source_title: "EPFiGMS - EPFO online grievance management system"
+  source_url: https://epfigms.gov.in
+  source_date: ""
+  text: >-
+    EPFiGMS is EPFO's online grievance portal at epfigms.gov.in. A member chooses
+    "Register Grievance", picks the status (PF member, EPS pensioner, employer or
+    others), enters the UAN and verifies with an OTP sent to the registered mobile.
+    The member then chooses the PF account the complaint is about, picks a grievance
+    category, and writes what happened and what relief is asked for. Attach supporting
+    documents if needed. The portal gives a registration number, which is used to
+    check the status and to send reminders. The text box is short, so keep the
+    description brief and specific: dates, claim ID, the exact rejection reason and the
+    action wanted. If the grievance is closed without a fix, the member can send a
+    reminder on the same registration number or complain on the central government
+    portal CPGRAMS at pgportal.gov.in.
+
+- key: rti_basics
+  codes: [R00, R02, R07]
+  source_title: "Right to Information Act, 2005 - sections 6, 7 and 19; RTI Rules, 2012"
+  source_url: https://rti.gov.in/rti-act.pdf
+  source_date: ""
+  text: >-
+    Under section 6 of the Right to Information Act, 2005, any citizen can ask a
+    public authority such as EPFO for information by applying to its Central Public
+    Information Officer (CPIO). The application fee for central public authorities is
+    Rs 10 under the RTI Rules, 2012; applicants below the poverty line do not pay the
+    fee. No reason has to be given for asking. Under section 7, the CPIO must reply
+    within 30 days of receiving the application (48 hours if the information concerns
+    a person's life or liberty). If there is no reply in time or the reply is
+    unsatisfactory, section 19 allows a first appeal to the First Appellate Authority
+    within 30 days. EPFO accepts RTI applications online through rtionline.gov.in,
+    where the fee can be paid online.
+
+- key: form121_tds
+  codes: [R09]
+  source_title: "Form 121 replaces Form 15G/15H for TDS-exempt incomes from 1 April 2026 (Income-tax Act, 2025)"
+  source_url: https://www.incometax.gov.in
+  source_date: "13/04/2026"
+  text: >-
+    Tax may be deducted at source (TDS) on a PF withdrawal when the member's total
+    service is less than five years and the amount is above the threshold set by
+    income-tax law. A member whose total income is below the taxable limit could
+    earlier submit Form 15G (or Form 15H for senior citizens) to avoid TDS. With the
+    new Income-tax Act, 2025 in force from 1 April 2026, Form 15G and Form 15H are
+    replaced by a single consolidated Form 121, and EPFO issued instructions on this
+    on 13 April 2026. If PAN is not linked or not verified in the UAN profile, TDS is
+    deducted at a higher rate, so the member should first check that PAN is verified
+    under KYC on the member portal. Check the current threshold and form on the
+    income-tax portal before filing.
+
+- key: claim_pending
+  codes: [R07]
+  source_title: "EPFO member portal - tracking claim status and pending claims"
+  source_url: https://passbook.epfindia.gov.in
+  source_date: ""
+  text: >-
+    When a member files a claim while an earlier claim of the same kind is still being
+    processed, the new claim is usually rejected as "already under process" or as a
+    duplicate. The member can see every claim and its status on the member portal
+    under Online Services > Track Claim Status, or in the passbook site. If the earlier
+    claim is genuinely in process, the usual step is to wait for it to be settled or
+    rejected before filing again. If the earlier claim has been pending for a long time
+    with no movement, the member can raise a grievance on EPFiGMS quoting both claim
+    IDs and asking EPFO to settle or close the old claim so that a fresh claim can be
+    filed.
+
+- key: bank_kyc
+  codes: [R04]
+  source_title: "EPFO member portal - bank account KYC"
+  source_url: https://unifiedportal-mem.epfindia.gov.in/memberinterface/
+  source_date: ""
+  text: >-
+    A PF claim is paid only into a bank account that is seeded in the member's UAN
+    KYC and verified. The account must be in the member's own name; a joint account is
+    accepted only when it is held with the spouse. The member adds or updates the bank
+    account on the member portal under Manage > KYC by entering the account number and
+    IFSC. The bank or the employer then verifies it, and the status changes to
+    "approved". If the name in the bank record does not match the name in PF records,
+    or the IFSC is wrong, claims are rejected until the bank KYC is corrected. EPFO has
+    relaxed the need to upload a cheque or passbook image in some cases where the bank
+    account is already verified (circulars of 28 May 2024 and 3 April 2025).

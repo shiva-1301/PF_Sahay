@@ -4,7 +4,7 @@ else
 PY := .venv/bin/python
 endif
 
-.PHONY: setup dev backend frontend test circulars
+.PHONY: setup dev backend frontend test circulars corpus
 
 setup:
 	python -m venv .venv
@@ -25,3 +25,6 @@ test:
 
 circulars:
 	$(PY) scripts/download_circulars.py
+
+corpus:
+	$(PY) backend/corpus/build_corpus.py

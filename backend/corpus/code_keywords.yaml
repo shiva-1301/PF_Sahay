@@ -1,0 +1,150 @@
+# Corpus tagging map. A chunk is tagged with a code when its text (or title) matches
+# the code's taxonomy triggers (datasets/rejection_remarks/taxonomy_v1.yaml) or at least
+# `min_hits` of the corpus keywords below. Taxonomy triggers are written for portal
+# remarks and rarely appear in circular prose, so these keywords describe the same
+# root causes in the language circulars use. All patterns are case-insensitive regex.
+min_hits: 2
+title_weight: 2   # a keyword found in the source title counts this many times
+
+codes:
+  R01:
+    - joint declaration
+    - member profile
+    - profile updation
+    - \bname\b
+    - date of birth
+    - \bdob\b
+    - father
+    - spouse
+    - gender
+    - transgender
+    - correction
+  R02:
+    - date of exit
+    - date of leaving
+    - \bdoe\b
+    - reason of leaving
+    - still in service
+    - unemploy
+  R03:
+    - overlapping service
+    - overlap
+    - date of joining
+    - \bdoj\b
+    - transfer claim
+  R04:
+    - bank account
+    - cheque
+    - passbook
+    - \bifsc\b
+    - bank kyc
+    - \bkyc\b
+  R05:
+    - aadhaar
+    - \buidai\b
+    - seeding
+    - validated
+    - \becr\b
+  R06:
+    - transfer
+    - form[- ]?13
+    - multiple (uan|account)
+    - de-?linking
+    - erroneous(ly)? link
+    - annexure[- ]k
+    - member ids?
+    - past accumulations
+  R07:
+    - multiple rejections
+    - same (pf )?claims?
+    - already under process
+    - duplicate claim
+    - pending claim
+    - claim status
+  R08:
+    - two months
+    - 2 months
+    - cooling
+    - advance
+    - para 68
+    - final settlement
+    - form[- ]?(19|31)
+    - not eligible
+    - 9\.5 years
+  R09:
+    - 15g
+    - 15h
+    - form[- ]?121
+    - \btds\b
+    - \bpan\b
+    - income[- ]tax
+  R10:
+    - \beps\b
+    - pension scheme
+    - (form )?10c
+    - (form )?10d
+    - scheme certificate
+    - withdrawal benefit
+    - table d
+    - pension fund
+
+# OCR circulars whose titles match these are internal staff / administration matters
+# (CCS pension of EPFO's own employees, budgets, EDLI exemptions, the ELI employer
+# incentive) and are excluded from the member-facing corpus.
+exclude_title_patterns:
+  - ccs ?\(
+  - central civil services
+  - strengthening of administration
+  - budget estimates
+  - \beli scheme\b
+  - life certificate
+  - jeevan pramaan
+  - edli
+  - \bstaff\b
+  - \bhr\b
+  - hrm
+  - pension adalat
+  - adaalat
+  - notional increment
+  - travel
+  - salary
+  - cghs
+  - memorandum of inquiry
+  - review committee
+  - representation committee
+  - fma
+  - national pension system
+  - \bnps\b
+  - covid
+  - coronavirus
+  - knock off
+  - challans
+  - imprest
+  - iim
+  - workshop
+  - stakeholders
+  - pensioners?\b
+  - ppo\b
+  - government servant
+  - provisional pension
+  - higher wages
+  - joint options?
+  - freezing
+  - prosecution
+  - exempted establishments
+  - compliance matters
+  - industrial accidents
+  - death claims
+  - 1\.16%
+  - code on social security
+  - minutes of interactive
+  - grievances by mol
+  - pension division
+  - cpps
+  - centralised pension
+  - non-eps member
+  - inoperative
+  - health scheme
+  - ad hoc committee
+  - penal damages
+  - deposit linked insurance
