@@ -1,0 +1,82 @@
+# Additions to datasets/rejection_remarks/taxonomy_v1.yaml for the deterministic
+# classifier. Kept here so the dataset file stays untouched. Patterns are
+# case-insensitive regex, matched against the PII-stripped, lower-cased remark.
+
+# Extra triggers: other common phrasings of the same root cause.
+extra_triggers:
+  R01:
+    - "(name|dob|date of birth|gender).*(as per|in) aadhaar.*(differ|mismatch|not match)"
+    - '\b(dob|date of birth|gender|father''?s? name)\b[^;.]*\b(not match|differ|different|mismatch)'
+    - '\bname\b[^;.]*(aadhaar|uidai)[^;.]*\b(differ|different|not match)'
+  R02:
+    - "date of leaving"
+    - "exit date"
+    - "still (working|employed)|shown as (working|employed)"
+  R03:
+    - "\\bdoj\\b.*(mismatch|differ)"
+    - "joining date.*(mismatch|differ)"
+    - '(date of joining|joining date|\bdoj\b)[^;]*(before|prior to|earlier than)[^;]*(exit|leaving|\bdoe\b)'
+  R04:
+    - "cheque|passbook"
+    - "bank (details|account) (not|in)valid"
+    - "bank[^;.]*not (verified|approved)"
+    - "(as per|in) (the )?bank[^;.]*(not match|differ|different|mismatch)"
+  R05:
+    - "aadhaar seeding (is )?(pending|not done|not completed)"
+    - "aadhaar.*not (linked|seeded)"
+    - "not (seeded|linked|verified|validated) with aadhaar"
+  R06:
+    - "form ?13"
+    - "transfer (not|pending)"
+    - "not transferred"
+    - '(two|\b2|more than one|multiple) uans?\b|uans? (allotted|generated)'
+  R07:
+    - "claim (is )?(already )?pending"
+  R08:
+    - "two months"
+  R09:
+    - "pan (not|in)valid|pan not linked"
+  R10:
+    - "withdrawal benefit"
+    - "form ?10c"
+
+# A trigger match inside one of these contexts is ignored for that code: the phrase
+# is being used as a reference point, not named as the problem.
+suppress:
+  R02:
+    - "(from|after|since) (the )?(date of exit|doe)"
+
+# Intake answers that adjust a code's score when that code already has a trigger match.
+intake_bonus:
+  exit_date_shown:
+    false: {R02: 0.15}
+    true: {R02: -0.15}
+  aadhaar_validated:
+    false: {R05: 0.10}
+    true: {R05: -0.05}
+  claim_form:
+    "10C": {R10: 0.05}
+    "10D": {R10: 0.05}
+    "13": {R03: 0.05, R06: 0.05}
+    "31": {R08: 0.05}
+
+# When the remark matches nothing, a definite intake answer can still point to a
+# root cause. These give a "Probable" (0.6) diagnosis.
+intake_only:
+  - {field: exit_date_shown, value: false, code: R02}
+  - {field: aadhaar_validated, value: false, code: R05}
+
+# Fixed clarifying questions. Low-confidence results pick one by the top candidate
+# code; with no candidate, the first intake field still unanswered decides.
+clarifying_questions:
+  R01: "Do your name, date of birth and gender in your UAN profile exactly match your Aadhaar card?"
+  R02: "Does the portal show a Date of Exit against your last employer?"
+  R03: "Does your old job's Date of Exit come after your new job's Date of Joining on the portal?"
+  R04: "Does your bank account show as 'Verified' under KYC on the member portal?"
+  R05: "Does your UAN profile show your Aadhaar as verified?"
+  R06: "Do you have more than one UAN, or old PF accounts that were never transferred?"
+  R07: "Do you have another claim that is still being processed?"
+  R08: "Has it been at least two months since you left your last job?"
+  R09: "Is your PAN shown as verified under KYC on the member portal?"
+  R10: "In total, did you work less than 6 months, less than 10 years, or 10 years or more with PF?"
+  fallback: "Can you copy the full rejection reason exactly as shown under Track Claim Status?"

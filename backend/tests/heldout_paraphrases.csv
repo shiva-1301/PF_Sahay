@@ -1,0 +1,21 @@
+remark_text,root_cause_code
+Member name as per Aadhaar is different from name in EPFO database,R01
+DOB not matching with UIDAI data,R01
+Gender in UAN differs from Aadhaar,R01
+Employer has not updated date of leaving,R02
+Exit date not marked by establishment,R02
+Member is shown as still working in the establishment,R02
+Date of joining in new establishment is before date of exit in previous establishment,R03
+Bank account not verified by bank,R04
+Name as per bank does not match member name,R04
+IFSC not valid,R04
+Aadhaar not linked with UAN,R05
+UAN is not seeded with Aadhaar,R05
+Old PF account not transferred to current UAN,R06
+Two UANs allotted to member,R06
+A claim is already pending for this member ID,R07
+Final PF settlement not admissible as member is in service,R08
+Applied before completion of two months of unemployment,R08
+PAN not available; Form 121 not submitted,R09
+Pension contribution not remitted by employer,R10
+EPS service less than 6 months,R10
