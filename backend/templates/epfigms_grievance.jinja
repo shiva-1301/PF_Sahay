@@ -1,0 +1,9 @@
+Suggested category (pick the closest on the portal): Claim rejected - {{ code_name }}
+UAN (last 4 digits): {{ f.uan_last4 or "XXXX" }}
+Claim ID: {{ f.claim_id }}
+Claim filed on: {{ f.claim_date }}; rejected on: {{ f.rejection_date }}
+Establishment: {{ f.employer_name }}
+What happened: My claim (Form {{ form }}) was rejected with the remark "{{ remark_short }}". {{ problem }}
+Relief sought: {{ relief }}
+{% if refs %}Reference: {{ refs | join("; ") }}
+{% endif %}

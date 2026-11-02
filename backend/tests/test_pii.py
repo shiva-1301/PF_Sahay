@@ -61,3 +61,8 @@ def test_names_masked(text, expected):
 ])
 def test_title_case_remarks_not_mistaken_for_names(remark):
     assert pii.strip(remark) == (remark, {})
+
+
+def test_names_kept_when_asked_but_numbers_still_removed():
+    clean, counts = pii.strip("Aadhaar RAMESH K SINGH 2345 6789 0123", mask_names=False)
+    assert clean == "Aadhaar RAMESH K SINGH [AADHAAR]" and counts == {"AADHAAR": 1}

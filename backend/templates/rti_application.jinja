@@ -1,0 +1,51 @@
+# Application for information under Section 6(1) of the Right to Information Act, 2005
+
+To,
+The Central Public Information Officer,
+Employees' Provident Fund Organisation,
+Regional Office, {{ f.regional_office }}
+{{ office_address }}
+
+Date: {{ today }}
+
+## 1. Applicant
+
+Name: {{ f.member_name }}
+Address for correspondence: {{ f.member_address }}
+
+## 2. Subject
+
+Information about my PF claim{% if f.claim_id_given %} (Claim ID {{ f.claim_id }}){% endif %}, UAN {{ uan_masked }}{% if f.member_id_given %}, Member ID {{ f.member_id }}{% endif %}, filed on {{ f.claim_date }} and rejected with the remark "{{ remark }}".
+
+## 3. Information sought
+
+Please provide the following information:
+
+1. The current status of the above claim.
+2. The date on which the claim was received by your office.
+3. Copies of the file notings and the order recorded on the claim.
+4. The exact field or detail found mismatched or deficient, and the record it was compared against.
+5. The name and designation of the officer who handled the claim.
+6. The action-taken report on any grievance filed on EPFiGMS about this claim{% if f.grievance_no_given %} (registration no. {{ f.grievance_no }}){% endif %}.
+7. The expected date by which the claim, or a re-filed claim, will be decided.
+8. A copy of the circular or instruction applied while rejecting the claim.
+9. The number of claims with the same rejection reason that your office settled within 30 days of receipt during the last 12 months.
+10. The name and postal address of the First Appellate Authority for this application.
+
+## 4. Fee
+
+I am paying the application fee of Rs 10 by Indian Postal Order / Demand Draft / online payment, No. ____________________. Applicants below the poverty line are exempt from the fee on attaching a copy of their BPL certificate.
+
+## 5. Declaration
+
+I am a citizen of India. The information sought concerns my own PF account.
+
+Place: {{ f.place }}
+Date: {{ today }}
+
+Signature: ____________________
+{{ f.member_name }}
+
+## How to file
+
+You can file this application online at rtionline.gov.in: choose Employees' Provident Fund Organisation as the public authority, paste section 3 as the text of the request and pay the Rs 10 fee online. Or send this printed letter by post with the fee. The CPIO must reply within 30 days (Section 7). If there is no reply, or the reply is not satisfactory, you can file a first appeal within 30 days (Section 19).

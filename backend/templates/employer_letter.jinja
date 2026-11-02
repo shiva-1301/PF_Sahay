@@ -1,0 +1,60 @@
+{{ f.member_name }}
+{{ f.member_address }}
+
+Date: {{ today }}
+
+To,
+The HR / PF In-charge
+{{ f.employer_name }}
+{{ f.employer_address }}
+
+# Subject: {{ subject }}
+
+Ref: UAN {{ uan_masked }}{% if f.member_id_given %}, Member ID {{ f.member_id }}{% endif %}{% if f.claim_id_given %}, Claim ID {{ f.claim_id }}{% endif %}
+
+Dear Sir / Madam,
+
+{% if variant == "exit_date" -%}
+I worked with your establishment from {{ f.date_of_joining }} to {{ f.date_of_exit }}. My PF claim filed on {{ f.claim_date }} was rejected by EPFO with the remark: "{{ remark }}". EPFO records do not show a Date of Exit for my service with you, so the system treats me as still employed.
+
+I request you to mark my Date of Exit as {{ f.date_of_exit }}, with the correct reason for leaving, on the EPFO employer portal.
+{%- elif variant == "jd_attestation" -%}
+My PF claim filed on {{ f.claim_date }} was rejected by EPFO with the remark: "{{ remark }}". My details in EPFO records need to be corrected through a Joint Declaration. The detail to be corrected is: {{ f.correction_details }}.
+
+{% if jd == "B" -%}
+My UAN falls in Joint Declaration Category B (UAN issued before 1 October 2017, Aadhaar validated). I have filed, or will file, the Joint Declaration online. I request you to verify it against your records and approve it on the employer portal.
+{%- elif jd == "C" -%}
+My UAN falls in Joint Declaration Category C (not Aadhaar-validated). The correction has to be made through a physical Joint Declaration. I request you to verify my details against your records and sign the Joint Declaration form, which I will submit at the EPFO Regional Office with the supporting documents.
+{%- elif jd == "A" -%}
+My UAN falls in Joint Declaration Category A. If the portal does not let me complete the correction myself, I request you to verify my details against your records and approve the Joint Declaration on the employer portal.
+{%- else -%}
+I request you to verify my details against your records and approve the Joint Declaration on the employer portal or, if it has to be filed on paper, sign the Joint Declaration form.
+{%- endif %}
+{%- elif variant == "aadhaar_correction" -%}
+My PF claim filed on {{ f.claim_date }} was rejected by EPFO with the remark: "{{ remark }}". The Aadhaar linked to my UAN is not seeded or verified, or a wrong Aadhaar is linked.
+
+As per the EPFO order on seeding and correction of Aadhaar in UAN, a wrong Aadhaar is corrected by the employer through an online Joint Declaration, which the Regional Office then approves. I request you to file this correction on the employer portal, using the correct Aadhaar details that I will share with you directly.
+{%- elif variant == "bank_kyc" -%}
+My PF claim filed on {{ f.claim_date }} was rejected by EPFO with the remark: "{{ remark }}". The bank account linked to my UAN is not verified, or its details do not match.
+
+I have updated my bank account under KYC on the EPFO member portal. I request you to verify and approve this bank KYC on the employer portal.
+{%- elif variant == "eps" -%}
+My pension (EPS) claim filed on {{ f.claim_date }} was rejected by EPFO with the remark: "{{ remark }}". This relates to the EPS contributions recorded for my service with you from {{ f.date_of_joining }} to {{ f.date_of_exit }}.
+
+I request you to check the EPS contributions remitted for my service and, where they are wrong or missing, rectify them as per the EPFO instructions on rectification of erroneous EPS contributions.
+{%- else -%}
+My PF claim filed on {{ f.claim_date }} was rejected by EPFO with the remark: "{{ remark }}". {{ problem }}
+
+I request you to check that my service details with you (Date of Joining, Date of Exit and KYC) are correctly recorded with EPFO, and to help me resolve this rejection.
+{%- endif %}
+
+I request you to complete this within 15 days of receiving this letter and to let me know once it is done. If you need any document from me, please contact me at {{ f.contact }}.
+{% if refs %}
+
+Reference: {{ refs | join("; ") }}
+{% endif %}
+
+Yours faithfully,
+
+Signature: ____________________
+{{ f.member_name }}

@@ -51,3 +51,18 @@ One line of reasoning per decision. Newest phase at the bottom.
 - **`/explain` accepts `canned: true`** so demo mode never calls the API.
 - **Latency:** a live explanation takes ≈ 4–5 s once warm (17 s on a cold start including the embedding model load). The UI will show the diagnosis from `/classify` (≈ 5 ms) immediately and fill in the explanation when it arrives.
 - **Personal names are masked (decided by the product owner, 2 Nov 2026).** `pii.strip` replaces 2–5 capitalised words that follow a cue word (Aadhaar, UAN, PAN, bank, account, records, name, father's/mother's/spouse's name, nominee, member …) with `[NAME_1]`, `[NAME_2]`; the same name gets the same number, so the explanation can still say the two names differ. Words such as KYC, Not, Validated, Pending are never treated as name parts, so title-case remarks still classify. Names that do not follow a cue word are not caught — the masking is a best-effort safeguard, not a guarantee.
+
+## Phase 4 — Documents
+
+- **Templates use a tiny line markup** (`#` title, `##` heading, `- ` bullet, `1. ` numbered, blank line = new paragraph, consecutive lines = line breaks) that `documents.py` turns into ReportLab paragraphs. One renderer serves all four documents.
+- **Per-code wording lives in `backend/templates/doc_text.yaml`** (which letter variant, the one-line problem, the relief sought). Nothing in a document comes from the LLM.
+- **Employer-letter variants:** R01/R03 `jd_attestation` (text changes with JD category A/B/C), R02 `exit_date`, R04 `bank_kyc`, R05 `aadhaar_correction`, R10 `eps`; a sixth `general` variant covers codes the taxonomy gives no letter for, so every template renders for every code.
+- **Circular references are printed only from the taxonomy's `corpus_refs`.** R02, R04, R07 and R08 have none, so their letters cite none rather than guess.
+- **Recommended documents per code** = the taxonomy's list mapped to our four generators, plus the grievance + RTI escalation pair for every code. Taxonomy items without a generator (portal walkthroughs, transfer guide, eligibility explainer, form checklist) are covered by the on-screen fix steps instead.
+- **Blank fields print as `[placeholders]`** (e.g. `[Your postal address]`) so a member can fill them by hand; Jinja runs with `StrictUndefined` so a missing variable fails loudly instead of printing nothing.
+- **Documents keep names, logs and the LLM never see them.** `/documents` strips identity numbers from the remark but keeps names (`pii.strip(mask_names=False)`), because the documents go only back to the member. UAN is printed as `XXXXXXXX` + the 4 digits the user typed; the field only accepts exactly 4 digits.
+- **Nothing is written to disk:** PDFs and zips are built in memory and returned with `Cache-Control: no-store`; only `code` and the document count are logged.
+- **Font:** Bitstream Vera (bundled with ReportLab, embedded in each PDF) for dash and quote glyphs; this is also why each PDF is ~40 kB. Vera has no "→", so the RTI address placeholder reads `[Insert Regional Office address — see epfindia.gov.in > Contact Us]`. Text in Indian scripts would not render; all templates are English.
+- **Grievance stays under 1,500 characters:** remark quoted up to 160 characters; with every field at its maximum length the text is ~910 characters, and a hard cut at 1,500 is kept as a safety net.
+- **RTI address:** the offices dataset has no postal addresses, so every RTI prints the placeholder; `office_address()` will use a `postal_address` column automatically if one is added to the CSV.
+- **Sample output folder:** `scripts/try_documents.py` writes to `/tmp/pfsahay_samples/` on macOS/Linux and `%TEMP%\pfsahay_samples` on Windows (where `/tmp` would mean `C:\tmp`); `--out` overrides.

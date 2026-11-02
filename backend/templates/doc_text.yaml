@@ -1,0 +1,47 @@
+# Fixed, per-code wording used by the document templates. Nothing here is generated
+# by an LLM. `letter` picks the employer-letter variant; `problem` and `relief` feed
+# the grievance and the letters. Circular references come from the taxonomy's corpus_refs.
+R00:
+  letter: general
+  problem: The rejection reason does not say which detail is wrong.
+  relief: Tell me the exact detail that caused the rejection and how to correct it, so that I can file the claim again.
+R01:
+  letter: jd_attestation
+  problem: My name, date of birth or gender in EPFO records does not match my Aadhaar.
+  relief: Process my Joint Declaration for correcting my details as per Aadhaar, so that I can file the claim again.
+R02:
+  letter: exit_date
+  problem: My Date of Exit from the establishment has not been marked, so EPFO records show me as still in service.
+  relief: Direct the employer to mark my Date of Exit, or update it at the Regional Office, so that my claim can be processed.
+R03:
+  letter: jd_attestation
+  problem: My Date of Joining and Date of Exit across employers overlap in EPFO records.
+  relief: Correct the wrong Date of Joining or Date of Exit, so that my transfer or claim can be processed.
+R04:
+  letter: bank_kyc
+  problem: My bank account KYC is not verified, or the name or IFSC does not match.
+  relief: Verify my bank account KYC, or tell me exactly what is wrong with it, so that my claim can be paid.
+R05:
+  letter: aadhaar_correction
+  problem: My Aadhaar is not seeded or verified against my UAN, or a wrong Aadhaar is linked.
+  relief: Correct and verify the Aadhaar linked to my UAN, so that I can file the claim again.
+R06:
+  letter: general
+  problem: My service history is incomplete because earlier PF accounts or UANs are not linked or transferred.
+  relief: Transfer or link my earlier PF accounts to my current UAN, and de-link any member ID wrongly linked to it.
+R07:
+  letter: general
+  problem: My claim was rejected because an earlier claim is shown as pending.
+  relief: Settle or close the earlier pending claim, so that I can file a fresh claim.
+R08:
+  letter: general
+  problem: My claim was rejected as not eligible or filed on the wrong form.
+  relief: Tell me which form and which date I am eligible to file on, based on my service record.
+R09:
+  letter: general
+  problem: My claim was rejected for tax documentation, such as PAN not verified or Form 15G/15H/121 missing.
+  relief: Verify my PAN and accept my Form 121 declaration, so that my claim can be processed.
+R10:
+  letter: eps
+  problem: My pension (EPS) claim was rejected because of my EPS contribution or service record.
+  relief: Rectify my EPS contribution record and process my pension claim on the correct form.

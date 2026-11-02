@@ -1,0 +1,53 @@
+# Joint Declaration checklist{% if jd %} - Category {{ jd }}{% endif %}
+
+A Joint Declaration (JD) is EPFO's process for correcting your details, such as your name, date of birth or gender. How you file it depends on your category.
+
+{% if jd -%}
+Your category: {{ jd }}. {{ jd_definition }}
+{%- else -%}
+We could not tell your category from your answers, so all three are listed. Check when your UAN was issued and whether your Aadhaar is verified in your UAN profile.
+{%- endif %}
+
+Detail to correct: {{ field_label }}
+
+{% for cat in categories %}
+## Steps for Category {{ cat }}
+
+{% for step in steps[cat] -%}
+{{ loop.index }}. {{ step }}
+{% endfor %}
+{% endfor %}
+
+## Who approves the correction (Annexure I)
+
+{% for row in matrix -%}
+- {{ row.field }}: {% for cat in categories %}Category {{ cat }}: {{ row[cat] }}{% if not loop.last %}; {% endif %}{% endfor %}
+{% endfor %}
+
+{{ legend }}
+
+## Documents accepted for {{ field_label }} (Annexure II)
+
+{{ document_rule }}
+
+{% if documents -%}
+{% for d in documents -%}
+- {{ d }}
+{% endfor %}
+{%- else -%}
+The document list for this detail is not in our data yet. Check Annexure II of the EPFO circular below before filing.
+{%- endif %}
+
+{% if "C" in categories %}
+## If your employer's establishment is closed (Category C)
+
+The physical Joint Declaration can be attested by one of these authorities instead of the employer:
+
+{% for a in attesting -%}
+- {{ a }}
+{% endfor %}
+{% endif %}
+
+## Source
+
+{{ source }}

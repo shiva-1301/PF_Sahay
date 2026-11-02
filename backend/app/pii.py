@@ -66,8 +66,12 @@ def _mask_names(text: str, counts: Counter) -> str:
     return NAME_CUE.sub(sub, text)
 
 
-def strip(text: str) -> tuple[str, dict[str, int]]:
-    """Return (clean_text, redaction_counts)."""
+def strip(text: str, mask_names: bool = True) -> tuple[str, dict[str, int]]:
+    """Return (clean_text, redaction_counts).
+
+    `mask_names=False` keeps personal names (identity numbers are always removed); it is
+    used only for documents returned to the member themselves, never for logs or the LLM.
+    """
     counts: Counter[str] = Counter()
     clean = text or ""
     for label, pat in PATTERNS:
@@ -77,5 +81,6 @@ def strip(text: str) -> tuple[str, dict[str, int]]:
             return f"{prefix}[{label}]"
 
         clean = pat.sub(sub, clean)
-    clean = _mask_names(clean, counts)
+    if mask_names:
+        clean = _mask_names(clean, counts)
     return clean, dict(counts)
