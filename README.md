@@ -7,10 +7,38 @@ Built for Indiathon 2026 (E-Cell IIIT Bhubaneswar × LearnApart), "Build Your MV
 ## Repository layout
 
 ```
+backend/           # FastAPI app (Python)
+frontend/          # Next.js 14 single-page app (TypeScript + Tailwind)
+scripts/           # dev runners and data helpers
 datasets/          # all source data for the corpus, classifier and templates (see datasets/DATASETS.md)
+docs/              # decisions, architecture, privacy, metrics
 ```
 
-Application code (Next.js frontend, FastAPI backend, classifier, templates) lands in later phases per the implementation plan.
+## Run locally
+
+You need **Python 3.11+** and **Node.js 18+** installed.
+
+1. Copy the example settings and add your Anthropic key (optional — without it the app uses canned explanations):
+   ```bash
+   cp .env.example .env        # then edit .env and fill in ANTHROPIC_KEY
+   ```
+2. Install the backend (one time):
+   ```bash
+   python -m venv .venv
+   # Windows:        .venv\Scripts\pip install -r backend/requirements.txt
+   # macOS / Linux:  .venv/bin/pip install -r backend/requirements.txt
+   ```
+3. Install the frontend (one time):
+   ```bash
+   cd frontend && npm install && cd ..
+   ```
+4. Start both servers:
+   - macOS / Linux / WSL: `make dev`
+   - Windows (Git Bash): `bash scripts/dev.sh`
+   - Windows (PowerShell): `powershell -ExecutionPolicy Bypass -File scripts\dev.ps1`
+5. Open http://localhost:3000. The API runs on http://localhost:8000 (`/health` should say `ok`).
+
+Run the backend tests with `make test` (or `cd backend && ../.venv/Scripts/python -m pytest` on Windows).
 
 ## Pipeline (planned)
 
